@@ -5,11 +5,12 @@ export interface IProps {
   label: string;
   value: string;
   type?: string;
+  testid: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = (props: IProps) => {
-  const { label, value, type = "text", onChange } = props;
+  const { label, value, type = "text", onChange, testid } = props;
   return (
     <div className={Style.container}>
       <label>{label} : </label>
@@ -19,6 +20,7 @@ export const Input = (props: IProps) => {
           value={value}
           className={Style.input}
           onChange={onChange}
+          data-testid={testid}
         />
       </div>
     </div>

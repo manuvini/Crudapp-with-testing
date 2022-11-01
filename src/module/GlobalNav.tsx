@@ -7,11 +7,16 @@ const GlobalNav = () => {
       id: 1,
       to: "/",
       value: "Dashboard",
+      dataid: "dashboardbtn"
+      
+
     },
     {
       id: 2,
       to: "/add",
       value: "Add Post",
+      dataid: "addPostbtn"
+      
     },
   ];
   return (
@@ -22,6 +27,7 @@ const GlobalNav = () => {
             key={link.id}
             to={link.to}
             end
+            data-testid={link.dataid} 
             className={({ isActive }) => (isActive ? Style.active : undefined)}
           >
             {link.value}

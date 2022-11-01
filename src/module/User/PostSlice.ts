@@ -89,11 +89,11 @@ const userSlice = createSlice({
         body: action.payload.body,
         userId: action.payload.userId
       });
-      toastSuccess("User created");
+      toastSuccess("Post created");
     });
     builder.addCase(createUserAction.rejected, (state) => {
       state.createPostFormStatus = ApiStatus.error;
-      toastSuccess("Error while creating user");
+      toastSuccess("Error while creating Post");
     });
     builder.addCase(deleteUserAction.fulfilled, (state, action) => {
       const newList = state.list.filter((x) => x.id !== action.payload);
@@ -110,11 +110,11 @@ const userSlice = createSlice({
         body: action.payload.data.body,
         userId: action.payload.data.userId
       });
-      toastSuccess("User updated");
+      toastSuccess("Post updated");
     });
     builder.addCase(updateUserAction.rejected, (state) => {
       state.updatePostFormStatus = ApiStatus.error;
-      toastError("Error while updating user");
+      toastError("Error while updating post");
     });
   },
 });

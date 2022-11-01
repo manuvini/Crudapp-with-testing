@@ -77,11 +77,13 @@ const UserForm = (props: IProps) => {
   }, [createPostFormStatus]);
 
   return (
-    <div className={Style.container}>
+    <div className={Style.container}> 
       <form className={Style.form} onSubmit={onSubmitForm}>
+      Form to add and edit post
         <Input
           label="Title"
           value={title}
+          testid="Title"                    
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setTitle(e.target.value);
           }}
@@ -89,6 +91,7 @@ const UserForm = (props: IProps) => {
         <Input
           label="Body"
           value={body}
+          testid="Body"
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setBody(e.target.value);
           }}
@@ -98,6 +101,7 @@ const UserForm = (props: IProps) => {
           label="Userid"
           value={userid+""}
           type="number"
+          testid="Userid"
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             setUserid(parseInt(e.target.value));
           }}
@@ -105,6 +109,7 @@ const UserForm = (props: IProps) => {
         <div className={Style["btn-wrapper"]}>
           <input
             type="submit"
+            data-testid="submit"    
             value={isEditForm ? "Update" : "Create"}
             disabled={
               createPostFormStatus === ApiStatus.loading ||

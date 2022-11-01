@@ -19,7 +19,7 @@ const UserList = () => {
 
   return (
     <>
-      <table>
+      <table  >
         <tr>
           <th>Sl. No</th>
           <th>Title</th>
@@ -27,13 +27,18 @@ const UserList = () => {
           <th>UserId</th>
           <th>Action</th>
         </tr>
-        {listStatus === ApiStatus.loading && <tbody>List is loading</tbody>}
+        {listStatus === ApiStatus.loading && <tbody data-testid="body">List is loading</tbody>}
         {listStatus === ApiStatus.error && (
           <tbody>Error while loading list</tbody>
         )}
 
         {listStatus === ApiStatus.ideal &&
           list.map((user: IPost, index: number) => {
+
+            var num = index;
+            var viewbtn = "viewbtn"+index +"";
+            var deletebtn = "deletebtn"+index +"";
+            var editbtn = "editbtn"+index +"";
             return (
               <tr>
                 <td>{index + 1}</td>
@@ -48,13 +53,16 @@ const UserList = () => {
                       onClick={() => {
                         setUserDataToView(user);
                       }}
-                    />
+                      data-testid={viewbtn}                    
+                      />
                     <input
                       type="button"
                       value="Edit"
                       onClick={() => {
                         navigator(`/edit/${user.id}`);
                       }}
+                      data-testid={editbtn}
+
                     />
                     <input
                       type="button"
@@ -62,6 +70,8 @@ const UserList = () => {
                       onClick={() => {
                         dispatch(deleteUserAction(user.id));
                       }}
+                      data-testid={deletebtn}
+
                     />
                   </div>
                 </td>
